@@ -1,0 +1,26 @@
+.header{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+
+}
+.header ul{
+    
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    color: white;
+}
+
+.header button{
+    margin:auto;
+    padding: 10px 30px;
+
+}
+
+.header ul li:hover{
+    color: black;
+    font-weight: 600;
+}

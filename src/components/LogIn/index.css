@@ -1,0 +1,21 @@
+.login{
+    background-color: aquamarine;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.login form{
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 40px;
+    
+}
+
+.login input{
+    margin: 10px 0px;
+}
