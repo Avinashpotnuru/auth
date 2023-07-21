@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Cookies from "js-cookie";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate, useHistory } from "react-router-dom";
 
 import "./index.css";
 
@@ -11,34 +11,42 @@ const Login = () => {
     userName: "",
     password: "",
   });
+  const [err, setError] = useState(false);
   const { userName, password } = user;
 
-  const eventHandler = (e) => {
+  const navigation = useNavigate();
+
+  // const history = useHistory();
+
+  // console.log(history);
+
+  function eventHandler(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  }
   const submitHandler = (e) => {
     e.preventDefault();
     if (userName && password) {
       console.log("user", user);
-      // Cookies.set("username", user.userName);
-      // Cookies.set("password", user.password);
-
-      // const personName = Cookies.get("username");
-      // const personPassword = Cookies.get("password");
-      localStorage.setItem("userDetails", JSON.stringify(user));
-
-      const personDetails = localStorage.getItem("userDetails");
-      console.log(personDetails);
-
-      // console.log(personPassword, personName);
-      if (
-        personDetails.userName === "avinash" &&
-        personDetails.password === "9290145209"
-      ) {
-        <Navigate to={"/"} />;
+      if (userName === "avinash" && password === "9290145209") {
+        Cookies.set("username", user.userName);
+        Cookies.set("password", user.password);
+      } else {
+        setError(true);
       }
 
-      setUser({ userName: "", password: "" });
+      const personName = Cookies.get("username");
+      const personPassword = Cookies.get("password");
+      // localStorage.setItem("userDetails", JSON.stringify(user));
+
+      // const personDetails = localStorage.getItem("userDetails");
+      // const parsePersonDetails = JSON.parse(personDetails);
+      // console.log(parsePersonDetails);
+
+      if (personName === "avinash" && personPassword === "9290145209") {
+        // <Navigate to="/" />;
+        navigation("/");
+        setUser({ userName: "", password: "" });
+      }
     }
   };
   return (
@@ -62,6 +70,10 @@ const Login = () => {
         />
 
         <button type="submit">login</button>
+        <br />
+        {err && (
+          <h6 style={{ color: "red" }}>enter correct username and password</h6>
+        )}
       </form>
     </div>
   );
