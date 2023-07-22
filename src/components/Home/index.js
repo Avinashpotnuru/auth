@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card/index.js";
 
 import { useContext } from "react";
-import { store } from "../../App.js";
+import { contextStore } from "../../App.js";
+
+import { add } from "../../Store/CartSlice.js";
+import { useSelector } from "react-redux";
+
 // import Cookies from "js-cookie";
 
 const Home = () => {
   const [todoArray, setTodoArray] = useState([]);
   const [todo, setTodo] = useState("");
 
-  const [count, setCount] = useContext(store);
+  // const [count, setCount] = useContext(contextStore);
   // console.log(count, setCount);
 
   const todoHandler = () => {

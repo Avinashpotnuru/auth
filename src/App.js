@@ -10,26 +10,32 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Login from "./components/LogIn";
 import Cart from "./components/Cart";
+import Todo from "./components/Todo";
 
-export const store = createContext();
+import { Provider } from "react-redux";
+
+import store from "./Store/store";
+
+export const contextStore = createContext();
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   return (
     <div className="App">
       <Header />
-      <store.Provider value={[count, setCount]}>
+      <Provider store={store}>
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/todo" element={<Todo />} />
           </Route>
 
           <Route path="/login" element={<Login />} />
         </Routes>
-      </store.Provider>
+      </Provider>
     </div>
   );
 }
