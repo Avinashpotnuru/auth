@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useSelector } from "react-redux";
+import Child from "./Child";
 
 const Contact = () => {
-  const name = useSelector((state) => state.CartSlice.displayName.helperData);
+  const [ui, setUi] = useState("");
+  const bgChange = (color) => {
+    console.log("clr", color);
+    setUi(color);
+  };
+  // const name = useSelector((state) => state.CartSlice.displayName.helperData);
   return (
-    <div>
-      <h1>{name}</h1>
+    <div style={{ height: "100vh", background: `${ui}` }}>
+      <Child bgChange={bgChange} />
     </div>
   );
 };
