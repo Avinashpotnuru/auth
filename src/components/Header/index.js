@@ -26,6 +26,9 @@ const Header = () => {
         <Link to={"/cart"}>
           <li>Cart</li>
         </Link>
+        <Link to={"/movies"}>
+          <li>movies</li>
+        </Link>
       </ul>
       <button
         onClick={() => {
