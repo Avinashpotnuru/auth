@@ -13,7 +13,7 @@ const MoviesDetails = ({
   poster_path,
   backdrop_path,
 }) => {
-  console.log(title);
+  // console.log(title);
   const imagePath = "https://image.tmdb.org/t/p/w500";
   return (
     <div className="moviedetails">
