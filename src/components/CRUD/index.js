@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const CURD = () => {
+const CRUD = () => {
   const [todo, setTodo] = useState([]);
 
   const [todoInput, setTodoInput] = useState("");
@@ -83,4 +83,4 @@ const CURD = () => {
   );
 };
 
-export default CURD;
+export default CRUD;

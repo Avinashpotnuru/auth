@@ -8,7 +8,11 @@ const Child = ({ bgChange }) => {
   };
   return (
     <div>
-      <input value={color} onChange={colorChange} />
+      <input
+        placeholder="ENTER COLOR NAME ..."
+        value={color}
+        onChange={colorChange}
+      />
     </div>
   );
 };

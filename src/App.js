@@ -15,8 +15,9 @@ import Todo from "./components/Todo";
 import { Provider } from "react-redux";
 
 import store from "./Store/store";
-import CURD from "./components/CURD";
+
 import MoviesDb from "./components/MoviesDb";
+import CRUD from "./components/CRUD";
 
 export const contextStore = createContext();
 
@@ -34,7 +35,7 @@ function App() {
             <Route path="/movies" element={<MoviesDb />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/todo" element={<Todo />} />
-            <Route path="/crud" element={<CURD />} />
+            <Route path="/crud" element={<CRUD />} />
           </Route>
 
           <Route path="/login" element={<Login />} />
