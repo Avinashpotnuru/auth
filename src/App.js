@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import Header from "./components/Header";
 
 import { Route, Routes } from "react-router-dom";
@@ -14,32 +14,42 @@ import Todo from "./components/Todo";
 
 import { Provider } from "react-redux";
 
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import store from "./Store/store";
 
 import MoviesDb from "./components/MoviesDb";
 import CRUD from "./components/CRUD";
+import Fetching from "./components/Fetching";
 
 export const contextStore = createContext();
-
+const queryClient = new QueryClient();
 function App() {
   // const [count, setCount] = useState(0);
+
   return (
     <div className="App">
       <Header />
       <Provider store={store}>
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/movies" element={<MoviesDb />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/todo" element={<Todo />} />
-            <Route path="/crud" element={<CRUD />} />
-          </Route>
+        <QueryClientProvider client={queryClient}>
+          <Routes>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/movies" element={<MoviesDb />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/todo" element={<Todo />} />
+              <Route path="/crud" element={<CRUD />} />
+              <Route path="/fetching" element={<Fetching />} />
+            </Route>
 
-          <Route path="/login" element={<Login />} />
-        </Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        </QueryClientProvider>
       </Provider>
     </div>
   );

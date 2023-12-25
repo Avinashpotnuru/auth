@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MoviesDetails from "./MoviesDetails";
-import BounceLoader from "react-spinners/ClipLoader";
 
 import "./index.css";
-import { ClockLoader, HashLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 
 const filterData = [
   { title: "Now Playing", filter_id: "now_playing" },
